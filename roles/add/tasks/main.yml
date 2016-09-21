@@ -1,0 +1,10 @@
+---
+- name: copy dcos-install.tar
+  copy: src=/tmp/{{ clustername }}/dcos-install.tar dest=/dcos-install.tar
+- name: create directory /opt/dcos_install_tmp
+  file: path=/opt/dcos_install_tmp state=directory
+- name: Unpackage the dcos-install.tar file
+  shell: cd / && tar xf /dcos-install.tar -C /opt/dcos_install_tmp
+- name: run dcos_install.sh
+  shell: bash /opt/dcos_install_tmp/dcos_install.sh slave >> addnode.log
+

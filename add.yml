@@ -1,0 +1,14 @@
+---
+# 
+#- name: system requirements nodes to be added
+#  hosts: add
+#  remote_user: root
+#  roles:
+#  - { role: nodes, tags: ["add"] }
+
+# add node
+- name: add agents
+  hosts: add
+  remote_user: root
+  roles:
+  - {role: add, tags: ["add"] }

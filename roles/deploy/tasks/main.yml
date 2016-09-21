@@ -1,0 +1,24 @@
+---
+#deploy
+- name: Create a directory named genconf
+  file: path=/genconf state=directory
+- name: copy ip-detect script
+  template: src=ip-detect dest=/genconf/ip-detect   
+- name: copy config.yaml
+  template: src=config.yaml dest=/genconf/config.yaml
+- name: copy ssh_key
+  copy: src=ssh_key dest=/genconf/ssh_key mode=0600
+- name: copy the DC/OS installer
+  copy: src=dcos_generate_config.sh dest=/dcos_generate_config.sh
+- name: run dcos_generate_config.sh genconf
+  shell: cd / && bash /dcos_generate_config.sh --genconf
+- name: run dcos_generate_config.sh preflight
+  shell: cd / && bash /dcos_generate_config.sh --preflight
+- name: run dcos_generate_config.sh -deploy
+  shell: cd / && bash /dcos_generate_config.sh --deploy
+- name: run dcos_generate_config.sh -postflight
+  shell: cd / && bash /dcos_generate_config.sh --postflight
+- name: Backup your DC/OS installer files
+  shell: cd /genconf/serve && tar cf dcos-install.tar *
+- name: fetch dcos-install.tar
+  fetch: src=/genconf/serve/dcos-install.tar dest=/tmp/{{ clustername }}/dcos-install.tar flat=yes

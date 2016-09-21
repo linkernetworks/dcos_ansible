@@ -1,0 +1,8 @@
+---
+#install requirements
+- name: install python
+  yum: name=python,haproxy state=present
+- name: download get-pip
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=~/get-pip.py
+- name: install pip
+  command: python get-pip.py

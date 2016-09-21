@@ -1,0 +1,14 @@
+---
+# masters requirements
+- name: update
+  yum: name=* state=latest
+- name: install some utilities
+  yum: name=tar,xz,unzip,curl,ipset state=present
+- name: disable the sudo password prompt
+  lineinfile: dest=/etc/sudoers state=present regexp="Defaults    requiretty" line="#Defaults    requiretty"
+- name: erase firewalld
+  yum: name=firewalld state=absent
+- name: config selinux
+  lineinfile: dest=/etc/selinux/config state=present regexp="^SELINUX=" line="SELINUX=permissive"
+- name: add nogroup
+  group: name=nogroup state=present

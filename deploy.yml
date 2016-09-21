@@ -1,0 +1,22 @@
+---
+#for bootstrap node
+- name: system requirements for bootstrap nodes
+  hosts: bootstrap
+  remote_user: root
+
+  roles:
+  - { role: bootstrap, tag: ["bootstrap"] }
+
+# for all opendcos masters and agents
+- name: system requirements for all opendcos masters and agents
+  hosts: masters,agents
+  remote_user: root
+  roles:
+  - { role: nodes, tags: ["masters", "agents"] }
+
+# deploy
+- name: deploy opendcos
+  hosts: bootstrap
+  remote_user: root
+  roles:
+  - {role: deploy, tags: ["deploy"] }

@@ -1,0 +1,9 @@
+---
+
+# nodes requirements
+- name: nodes requiremwnts
+  include: requirements.yml
+
+- name: config docker
+  include: configdocker.yml
+

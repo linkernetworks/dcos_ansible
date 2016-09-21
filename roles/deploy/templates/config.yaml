@@ -1,0 +1,17 @@
+---
+agent_list:
+- {{agent1}}
+bootstrap_url: file:///opt/dcos_install_tmp
+cluster_name: {{clustername}}
+exhibitor_storage_backend: static
+ip_detect_filename: /genconf/ip-detect
+master_discovery: static
+master_list:
+- {{master1}}
+process_timeout: 10000
+resolvers:
+- 8.8.8.8
+- 114.114.114.114
+ssh_port: 22
+ssh_user: {{sshuser}}
+

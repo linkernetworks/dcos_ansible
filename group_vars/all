@@ -1,0 +1,7 @@
+---
+network: enp0s8
+clustername: dcos
+sshuser: root
+agent1: 192.168.56.103
+master1: 192.168.56.106
+

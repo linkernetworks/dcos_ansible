@@ -17,7 +17,7 @@ network: enp0s8
 clustername: dcos
 sshuser: root
 ```
-network represent for name of private network used in the cluster.
+network represents for name of private network used in the cluster.
 
 *hosts:*
 ```
@@ -57,6 +57,7 @@ config `agent_list` and `master_list` in *config.yaml*
 
 *ssh_key*  
 replace *ssh_key* with your own private key rename it *ssh_key*.
+
 -------------------------------------------------------------------------
 after configration, run   
 `sh beforeDeploy.sh ` and `sh deploy.sh` to start deploy.
@@ -69,6 +70,7 @@ you need a *dcos-install.tar* file to add nodes to a deployed cluster, which you
 
 *hosts*  
 add the ip to be added under `[add]`
+
 -----------------------------------------------------------------------
 after configration, run 
 `sh add.sh` to start add node.
